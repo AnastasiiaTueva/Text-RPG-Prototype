@@ -2,7 +2,8 @@ import random
 import os
 import character
 import stats
-
+import hotkeys
+import mobs
 
 def clear():
     os.system('cls')
@@ -27,22 +28,21 @@ def choose_stats():
 
 
 
-
-
-
 def quest1():
+    clear()
     print("\nYou encountered a Skeleton with a sword")
-    skeleton = 20
+    skeleton = mobs.Skeleton.health
     while True:
-        
-        Sdamage = random.randint(1,2)
+        hotkeys.ui()
         do = input("\nAttack or Dodge?:").lower()
+
         if do == "attack":
-            skeleton = int(skeleton) - character.Hero.damage
+            mobs.Skeleton.health -= character.Hero.damage
             
-            if skeleton > 0:
-                print(f"The skeleton has {skeleton} health left")
-                character.Hero.health -= Sdamage
+            if mobs.Skeleton.health > 0:
+                clear()
+                print(f"The skeleton has {mobs.Skeleton.health} health left")
+                character.Hero.health -= mobs.Skeleton.damage
                 print(f"The skeleton attacked you. You have {character.Hero.health} health left")
                 
                 if character.Hero.health <=0:
@@ -50,13 +50,19 @@ def quest1():
                     print("You have been defeated")
                     break
                     
-            elif skeleton <= 0:
+            elif mobs.Skeleton.health <= 0:
                 clear()
-                print("The skeleton is defeated. You gained 20 XP")
-                character.Hero.XP += 20
+                print(f"The skeleton is defeated. You gained {mobs.Skeleton.XP} XP")
+                character.Hero.XP += mobs.Skeleton.XP
                 input("Continue the adventure. Press any key... ")
                 clear()
                 break
                 
         elif do == "dodge":
-            print("The skeleton attacked you, but you dodged.")
+
+            clear()
+            if random.random() < 0.5:
+                print("The skeleton attacked you, but you dodged.")
+            else:
+                character.Hero.health -= mobs.Skeleton.damage
+                print(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
