@@ -1,12 +1,20 @@
 import random
 
-
 class Character:
 
-    def __init__(self, health, damage, XP):
+    def __init__(self, health, minDamage, maxDamage, XP):
 
         self.health = health
-        self.damage = damage
+        self.minDamage = minDamage
+        self.maxDamage = maxDamage
         self.XP = XP
 
-Hero = Character(20, random.randint(1,3), 0)
+        self.luck = 1
+        self.strength = 1
+        self.agility = 1
+        self.intelligence = 1
+
+    def attack(self):
+        return random.randint(self.minDamage, self.maxDamage)
+
+Hero = Character(20, 1, 4, 0)
