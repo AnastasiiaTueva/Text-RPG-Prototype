@@ -1,12 +1,44 @@
 import Events
-
+import Items
+import food
+import character
+import stats
 
 def ui():
     width = 60
-
-
     print("\n " + "-" * width + " ")
 
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
     print("|" + menu.center(width) + "|")
     print(" " + "-" * width + " ")
+
+
+inventory = []
+inventory.append(food.Apple)
+
+def I():
+    Events.clear()
+    print("Inventory:")
+    for item in inventory:
+        print(f"{item}")
+
+    choice = input("What item do you want to use?(object/No) ").lower()
+
+    if choice.lower() == "no":
+        return
+    
+    for item in inventory:
+        if item.name.lower() == choice:
+            if isinstance(item, food.Food):
+                character.Hero.health += item.heal
+
+            inventory.remove(item)
+            print(f"{item.description} was used. Your current health {character.Hero.health}")
+            return
+    print("There is no such item")
+
+def S():
+    print(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
+    input("Continue the adventure. Press any key... ")
+    Events.clear()
+    return
