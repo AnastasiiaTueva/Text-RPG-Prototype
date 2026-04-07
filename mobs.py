@@ -2,9 +2,13 @@ import random
 
 class Mob:
 
-    def __init__(self, health, damage, XP):
+    def __init__(self, health, minDamage,maxDamage, XP):
         self.health = health
-        self.damage = damage
+        self.minDamage = minDamage
+        self.maxDamage = maxDamage
         self.XP = XP
 
-Skeleton = Mob(20, random.randint(1,2), 50)
+    def attack(self):
+        return random.randint(self.minDamage, self.maxDamage)
+
+Skeleton = Mob(20, 1, 2, 50)
