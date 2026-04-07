@@ -1,8 +1,10 @@
 import random
 import os
 import Events
+import hotkeys
+import stats
 
-
+text = hotkeys.ui()
 
 def clear():
     os.system('cls')
@@ -10,13 +12,14 @@ def clear():
 
 while True:
     clear()
-    Events.choose_stats()
+    stats.choose_stats()
     Quest = input("Monsters have started coming out of a nearby dungeon and are scaring our village. Can you help us? :'( (Yes, No): ").lower()
     if Quest == "no":
         print("\nEveryone got scared and left, and you stayed alone :(")
         break
     elif Quest == "yes":
         Events.quest1()
+        
     else:
         print("\n0-0")
         break
