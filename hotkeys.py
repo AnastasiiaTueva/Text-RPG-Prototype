@@ -3,9 +3,12 @@ import Items
 import food
 import character
 import stats
+import special
 
 def ui():
     width = 60
+
+
     print("\n " + "-" * width + " ")
 
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
@@ -39,6 +42,7 @@ def I():
 
 def S():
     print(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
+    print(f"ability: {special.Perk}. {special.Perk.description}")
     input("Continue the adventure. Press any key... ")
     Events.clear()
     return
