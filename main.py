@@ -12,8 +12,10 @@ def clear():
 
 while True:
     clear()
-    stats.choose_stats()
-    Quest = input("Monsters have started coming out of a nearby dungeon and are scaring our village. Can you help us? :'( (Yes, No): ").lower()
+    stats.beginning()
+    clear()
+    Quest = input("You take an item into your inventory. The elder leads you to the entrance of the dungeon.\n"
+    "The end of this story lies entirely in your hands. Are you ready? (Yes, No): ").lower()
     if Quest == "no":
         print("\nEveryone got scared and left, and you stayed alone :(")
         break
