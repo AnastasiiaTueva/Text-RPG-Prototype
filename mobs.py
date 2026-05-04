@@ -11,4 +11,13 @@ class Mob:
     def attack(self):
         return random.randint(self.minDamage, self.maxDamage)
 
-Skeleton = Mob(20, 1, 2, 50)
+
+Skeleton = Mob(20, 1, 4, 50)
+
+Slime = Mob(15, 1, 2, 25)
+
+def randomMob():
+    Mobs = [Skeleton, Slime]
+    random_mobs = random.choice(Mobs)
+    print(f"\nYou encountered {random_mobs}")
+    return random_mobs
