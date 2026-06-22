@@ -5,18 +5,31 @@ import stats
 import hotkeys
 import mobs
 import Items
+import Locations
 
 def clear():
     os.system('cls')
 
+
 def quest1():
     clear()
-    print("\nYou encountered a Skeleton with a sword")
+
+
+    # Create random location
+    Locations.locationGen()
+
+
+    # Spawn random Monster
+    mobs.randomMob()
+
+    
     while True:
+        # Creating the fight and results
         hotkeys.ui()
         do = input("\nAttack or Dodge?:").lower()
 
         if do == "attack":
+
             mobs.Skeleton.health -= character.Hero.attack() + (character.Hero.strength // 2)
             
             if mobs.Skeleton.health > 0:
