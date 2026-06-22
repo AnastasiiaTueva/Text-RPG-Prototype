@@ -4,10 +4,12 @@ import hotkeys
 import os
 import special
 
+# Terminal cleaning
 def clear():
     os.system('cls')
 
 
+# The start event function and select the path
 def beginning():
     clear()
     print("Stranger! I know this is a sudden, but we need your help.\n" \
@@ -65,6 +67,9 @@ def beginning():
         input("Continue the adventure. Press any key... ")
         return
     clear()
+
+# Function to get the first item
+def beginning_item():
     print("Our settlement is not wealthy, but you may take any item from our storage.\n" \
     "(You head to the local storage with the village elder.\n" \
     "It is a small wooden, hut, filled with the smell of dust and tree sap.\n" \
