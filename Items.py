@@ -1,9 +1,11 @@
+# Creating an item class and characteristics
 class Items:
 
     def __init__(self, description, price):
         self.description = description
         self.price = price
 
+# Creating an item objects
 Bone = Items("a Monster bone. Might come in handy", 10)
 
 Stick = Items("A smooth handle for future axe, pickaxe, or something similar. Doesn't sound very useful, but with enough imagination, it might prove handy.", 20)
