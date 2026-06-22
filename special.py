@@ -1,3 +1,4 @@
+# Creating a Special class and characteristics
 class Special:
     def __init__(self, name, description):
         self.name = name
@@ -5,7 +6,8 @@ class Special:
     
     def __str__(self):
         return self.name
-
+    
+# Creating a special objects
 Perk = None
 SurvivalSense = Special("Survival Sense","Higher chance to find food and drink.")
 
