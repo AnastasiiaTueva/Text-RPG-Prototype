@@ -1,3 +1,4 @@
+# Creating a food class and characteristics
 class Food:
 
     def __init__(self, name, description, heal, price):
@@ -9,4 +10,6 @@ class Food:
     def __str__(self):
         return self.name
 
+
+# Creating a food objects
 Apple = Food("apple","A juicy ripe apple", 5, 10)
