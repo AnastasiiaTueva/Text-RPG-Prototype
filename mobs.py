@@ -21,8 +21,11 @@ Skeleton = Mob(20, 1, 4, 50)
 # Creating a Slime object
 Slime = Mob(15, 1, 2, 25)
 
+# Creating a Zombie object
+Zombie = Mob(15, 1, 2, 25)
+
 # Creating randomization of monster spawns
 def randomMob():
-    Mobs = [Skeleton, Slime]
+    Mobs = [Skeleton, Slime, Zombie]
     random_mobs = random.choice(Mobs)
     print(f"\nYou encountered {random_mobs}")
