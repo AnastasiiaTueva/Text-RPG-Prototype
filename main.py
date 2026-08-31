@@ -3,36 +3,55 @@ import os
 import Events
 import hotkeys
 import stats
+import difficulty
+
+
+rooms = difficulty.difficult()
+Events.event = 0
 
 # Terminal cleaning
 def clear():
     os.system('cls')
 
+difficulty.difficult()
 
-while True:
+clear()
 
-    clear()
+#call the start event function and select the path
+stats.beginning()
+stats.beginning_item()
 
-    #call the start event function and select the path
-    stats.beginning()
-    stats.beginning_item()
+Quest = input("You take an item into your inventory. The elder leads you to the entrance of the dungeon.\n"
+"The end of this story lies entirely in your hands. Are you ready? (Yes, No): ").lower()
 
-    clear()
+if Quest == "no":
 
-    Quest = input("You take an item into your inventory. The elder leads you to the entrance of the dungeon.\n"
-    "The end of this story lies entirely in your hands. Are you ready? (Yes, No): ").lower()
+    print("\nEveryone got scared and left, and you stayed alone :(")
 
-    if Quest == "no":
+elif Quest == "yes":
 
-        print("\nEveryone got scared and left, and you stayed alone :(")
-        break
-    
-    #calling event functions (requires creating several events and their randomizer)
-    elif Quest == "yes":
+    while True:
 
-        Events.quest1()
+        clear()
+
+        if Events.event >= 0:
+            Events.quest1()
+
+            if difficulty.difficult == "easy" and Events.event == 5:
+                print("You finished the game!")
+                input("Press any key to continue...")
+
+            elif difficulty.difficult == "hard" and Events.event == 10:
+                print("You finished the game!")
+                input("Press any key to continue...")
+
+            elif difficulty.difficult == "hardcore" and Events.event == 15:
+                print("You finished the game!")
+                input("Press any key to continue...")
+            
+
         
-    else:
+        else:
 
-        print("\n0-0")
-        break
+            print("\n0-0")
+            break
