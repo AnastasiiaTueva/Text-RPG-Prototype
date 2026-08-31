@@ -10,8 +10,11 @@ import Locations
 def clear():
     os.system('cls')
 
+event = 0
+
 
 def quest1():
+    global event
     clear()
 
 
@@ -41,6 +44,8 @@ def quest1():
                 if character.Hero.health <=0:
                     clear()
                     print("You have been defeated")
+                    input("Press any key to continue...")
+                    event -= 1
                     break
                     
             elif mobs.Skeleton.health <= 0:
@@ -48,9 +53,14 @@ def quest1():
                 print(f"The skeleton is defeated. You gained {mobs.Skeleton.XP} XP. You got a Bone.")
                 hotkeys.inventory.append("Bone")
                 character.Hero.XP += mobs.Skeleton.XP
-                input("Continue the adventure. Press any key... ")
+                event += 1
+                print(f"finished event(s): {event}")
+                input("Press any key to continue...")
+                
+                
                 clear()
                 break
+            
                 
         elif do == "dodge":
 
