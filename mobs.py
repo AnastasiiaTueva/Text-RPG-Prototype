@@ -4,7 +4,8 @@ import random
 # Creating a monster class and characteristics
 class Mob:
 
-    def __init__(self, health, minDamage,maxDamage, XP):
+    def __init__(self, name, health, minDamage,maxDamage, XP):
+        self.name = name
         self.health = health
         self.minDamage = minDamage
         self.maxDamage = maxDamage
@@ -14,18 +15,11 @@ class Mob:
         return random.randint(self.minDamage, self.maxDamage)
 
 
-# Creating a Skeleton object
-Skeleton = Mob(20, 1, 4, 50)
-
-
-# Creating a Slime object
-Slime = Mob(15, 1, 2, 25)
-
-# Creating a Zombie object
-Zombie = Mob(15, 1, 2, 25)
-
 # Creating randomization of monster spawns
 def randomMob():
-    Mobs = [Skeleton, Slime, Zombie]
-    random_mobs = random.choice(Mobs)
-    print(f"\nYou encountered {random_mobs}")
+    Mobs = [
+            Mob("Skeleton", 20, 1, 4, 50),
+            Mob("Slime", 15, 1, 2, 25),
+            Mob("Zombie", 15, 1, 2, 25)
+    ]
+    return random.choice(Mobs)
