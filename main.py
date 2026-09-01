@@ -7,13 +7,13 @@ import difficulty
 
 
 rooms = difficulty.difficult()
+
 Events.event = 0
 
 # Terminal cleaning
 def clear():
     os.system('cls')
 
-difficulty.difficult()
 
 clear()
 
@@ -37,21 +37,15 @@ elif Quest == "yes":
         if Events.event >= 0:
             Events.quest1()
 
-            if difficulty.difficult == "easy" and Events.event == 5:
+            if Events.event >= rooms:
                 print("You finished the game!")
-                input("Press any key to continue...")
-
-            elif difficulty.difficult == "hard" and Events.event == 10:
-                print("You finished the game!")
-                input("Press any key to continue...")
-
-            elif difficulty.difficult == "hardcore" and Events.event == 15:
-                print("You finished the game!")
-                input("Press any key to continue...")
+                input("Press any key to finish the game...")
+                break
             
 
         
-        else:
+    else:
 
+        print("\n0-0")
             print("\n0-0")
             break
