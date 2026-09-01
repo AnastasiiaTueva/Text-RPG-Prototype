@@ -23,23 +23,24 @@ def quest1():
 
 
     # Spawn random Monster
-    mobs.randomMob()
+    mob = mobs.randomMob()
+    print(f"You encountered {mob.name}")
 
     
     while True:
         # Creating the fight and results
         hotkeys.ui()
-        do = input("\nAttack or Dodge?:").lower()
+        do = input("\nAttack or Dodge?(A/D):").lower()
 
-        if do == "attack":
+        if do == "a":
 
-            mobs.Skeleton.health -= character.Hero.attack() + (character.Hero.strength // 2)
+            mob.health -= character.Hero.attack() + (character.Hero.strength // 2)
             
-            if mobs.Skeleton.health > 0:
+            if mob.health > 0:
                 clear()
-                print(f"The skeleton has {mobs.Skeleton.health} health left")
-                character.Hero.health -= mobs.Skeleton.attack()
-                print(f"The skeleton attacked you. You have {character.Hero.health} health left")
+                print(f"The {mob.name} has {mob.health} health left")
+                character.Hero.health -= mob.attack()
+                print(f"The {mob.name} attacked you. You have {character.Hero.health} health left")
                 
                 if character.Hero.health <=0:
                     clear()
@@ -48,11 +49,11 @@ def quest1():
                     event -= 1
                     break
                     
-            elif mobs.Skeleton.health <= 0:
+            elif mob.health <= 0:
                 clear()
-                print(f"The skeleton is defeated. You gained {mobs.Skeleton.XP} XP. You got a Bone.")
+                print(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a Bone.")
                 hotkeys.inventory.append("Bone")
-                character.Hero.XP += mobs.Skeleton.XP
+                character.Hero.XP += mob.XP
                 event += 1
                 print(f"finished event(s): {event}")
                 input("Press any key to continue...")
@@ -62,13 +63,13 @@ def quest1():
                 break
             
                 
-        elif do == "dodge":
+        elif do == "d":
 
             clear()
             if random.random() < 0.2 * character.Hero.agility:
-                print("The skeleton attacked you, but you dodged.")
+                print(f"The {mob.name} attacked you, but you dodged.")
             else:
-                character.Hero.health -= mobs.Skeleton.attack()
+                character.Hero.health -= mob.attack()
                 print(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
         
         elif do == "i":
