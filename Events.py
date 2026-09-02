@@ -6,21 +6,21 @@ import hotkeys
 import mobs
 import Items
 import Locations
+import food
 
 def clear():
     os.system('cls')
 
 event = 0
 
-
 def quest1():
     global event
     clear()
 
-
     # Create random location
     Locations.locationGen()
 
+    foods = food.randomFood()
 
     # Spawn random Monster
     mob = mobs.randomMob()
@@ -51,18 +51,16 @@ def quest1():
                     
             elif mob.health <= 0:
                 clear()
-                print(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a Bone.")
-                hotkeys.inventory.append("Bone")
+                print(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a {foods.name}.")
+                hotkeys.inventory.append(foods)
                 character.Hero.XP += mob.XP
                 event += 1
                 print(f"finished event(s): {event}")
                 input("Press any key to continue...")
                 
-                
                 clear()
                 break
             
-                
         elif do == "d":
 
             clear()
