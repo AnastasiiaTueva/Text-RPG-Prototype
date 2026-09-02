@@ -9,19 +9,14 @@ import special
 # Hotcase menu appearance
 def ui():
     width = 60
-
-
     print("\n " + "-" * width + " ")
 
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
     print("|" + menu.center(width) + "|")
     print(" " + "-" * width + " ")
 
-
 # Creating an inventory list
 inventory = []
-inventory.append(food.Apple)
-
 
 # Creating functionality for the letter I
 def I():
@@ -38,13 +33,13 @@ def I():
 
     # Reaction to the fact that an item must be of the food class to restore health
     for item in inventory:
-        if item.name.lower() == choice:
-            if isinstance(item, food.Food):
+        if isinstance(item, food.Food):
+            if item.name.lower() == choice:
                 character.Hero.health += item.heal
 
-            inventory.remove(item)
-            print(f"{item.description} was used. Your current health {character.Hero.health}")
-            return
+                inventory.remove(item)
+                print(f"{item.description} was used. Your current health {character.Hero.health}")
+                return
     print("There is no such item")
 
 
@@ -53,5 +48,8 @@ def S():
     print(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
     print(f"ability: {special.Perk}. {special.Perk.description}")
     input("Continue the adventure. Press any key... ")
+    Events.clear()
+    return
+
     Events.clear()
     return
