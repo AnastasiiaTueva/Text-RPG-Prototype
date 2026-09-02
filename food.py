@@ -1,3 +1,5 @@
+import random
+
 # Creating a food class and characteristics
 class Food:
 
@@ -12,4 +14,12 @@ class Food:
 
 
 # Creating a food objects
-Apple = Food("apple","A juicy ripe apple", 5, 10)
+
+def randomFood():
+
+    foods = [
+            Food("Apple", "A juicy ripe apple", 5, 10),
+            Food("Bread", "A simple fresh bread", 8, 15),
+    ]
+    
+    return random.choice(foods)
