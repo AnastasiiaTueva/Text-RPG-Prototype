@@ -9,12 +9,12 @@ def difficult():
 
         case "easy":
             
-            return easy
+            return 1
 
         case "hard":
 
-            return hard
+            return 1.5
 
         case "hardcore":
 
-            return hardcore
+            return 2
