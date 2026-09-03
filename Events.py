@@ -7,15 +7,19 @@ import mobs
 import Items
 import Locations
 import food
+import difficulty
 
 def clear():
     os.system('cls')
 
 event = 0
 
+mobH = difficulty.difficult()
+
 def quest1():
     global event
     clear()
+
 
     # Create random location
     Locations.locationGen()
@@ -24,6 +28,9 @@ def quest1():
 
     # Spawn random Monster
     mob = mobs.randomMob()
+
+    mob.health *= mobH
+
     print(f"You encountered {mob.name}")
 
     
@@ -33,15 +40,14 @@ def quest1():
         do = input("\nAttack or Dodge?(A/D):").lower()
 
         if do == "a":
-
-            mob.health -= character.Hero.attack() + (character.Hero.strength // 2)
             
             if mob.health > 0:
                 clear()
+                mob.health -= character.Hero.attack()
                 print(f"The {mob.name} has {mob.health} health left")
                 character.Hero.health -= mob.attack()
                 print(f"The {mob.name} attacked you. You have {character.Hero.health} health left")
-                
+      
                 if character.Hero.health <=0:
                     clear()
                     print("You have been defeated")
@@ -57,10 +63,9 @@ def quest1():
                 event += 1
                 print(f"finished event(s): {event}")
                 input("Press any key to continue...")
-                
                 clear()
                 break
-            
+               
         elif do == "d":
 
             clear()
