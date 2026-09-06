@@ -5,8 +5,7 @@ import hotkeys
 import stats
 import difficulty
 
-
-rooms = difficulty.difficult()
+rooms = difficulty.difficult_rooms()
 
 Events.event = 0
 
@@ -47,5 +46,3 @@ elif Quest == "yes":
     else:
 
         print("\n0-0")
-            print("\n0-0")
-            break
