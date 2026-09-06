@@ -18,7 +18,7 @@ class Mob:
 # Creating randomization of monster spawns
 def randomMob():
     Mobs = [
-            Mob("Skeleton", 20, 1, 4, 50),
+            Mob("Skeleton", 20, 1, 2, 50),
             Mob("Slime", 15, 1, 2, 25),
             Mob("Zombie", 15, 1, 2, 25)
     ]
