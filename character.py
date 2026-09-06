@@ -21,4 +21,4 @@ class Character:
         return random.randint(self.minDamage, self.maxDamage)
 
 # Creating a main character object
-Hero = Character(20, 1, 4, 0)
+Hero = Character(30, 1, 4, 0)
