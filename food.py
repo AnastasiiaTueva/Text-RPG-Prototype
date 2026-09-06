@@ -18,8 +18,8 @@ class Food:
 def randomFood():
 
     foods = [
-            Food("Apple", "A juicy ripe apple", 5, 10),
-            Food("Bread", "A simple fresh bread", 8, 15),
+            Food("Apple", "A juicy ripe apple", 10, 10),
+            Food("Bread", "A simple fresh bread", 12, 15),
     ]
     
     return random.choice(foods)
