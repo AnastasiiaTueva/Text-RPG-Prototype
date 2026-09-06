@@ -13,13 +13,13 @@ def clear():
     os.system('cls')
 
 event = 0
-
 mobH = difficulty.difficult()
 
 def quest1():
-    global event
-    clear()
 
+    global event
+    global mobH
+    clear()
 
     # Create random location
     Locations.locationGen()
@@ -29,7 +29,7 @@ def quest1():
     # Spawn random Monster
     mob = mobs.randomMob()
 
-    mob.health *= mobH
+    mob.health = mob.health * mobH
 
     print(f"You encountered {mob.name}")
 
