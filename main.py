@@ -5,14 +5,15 @@ import hotkeys
 import stats
 import difficulty
 
-rooms = difficulty.difficult_rooms()
-
-Events.event = 0
-
 # Terminal cleaning
 def clear():
     os.system('cls')
 
+clear()
+
+rooms = difficulty.difficult()
+
+Events.event = 0
 
 clear()
 
@@ -34,15 +35,13 @@ elif Quest == "yes":
         clear()
 
         if Events.event >= 0:
-            Events.quest1()
+            Events.quest1(rooms)
 
             if Events.event >= rooms:
                 print("You finished the game!")
                 input("Press any key to finish the game...")
                 break
             
-
-        
     else:
 
         print("\n0-0")
