@@ -9,8 +9,8 @@ import special
 # Hotcase menu appearance
 def ui():
     width = 60
-    print("\n " + "-" * width + " ")
 
+    print("\n " + "-" * width + " ")
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
     print("|" + menu.center(width) + "|")
     print(" " + "-" * width + " ")
@@ -42,14 +42,11 @@ def I():
                 return
     print("There is no such item")
 
-
 # Creating functionality for the letter S
 def S():
+    print(f"Exp: {character.Hero.XP}")
     print(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
     print(f"ability: {special.Perk}. {special.Perk.description}")
     input("Continue the adventure. Press any key... ")
-    Events.clear()
-    return
-
     Events.clear()
     return
