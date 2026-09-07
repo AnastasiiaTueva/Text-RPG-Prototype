@@ -7,29 +7,24 @@ import mobs
 import Items
 import Locations
 import food
-import difficulty
 
 def clear():
     os.system('cls')
 
 event = 0
-mobH = difficulty.difficult()
 
-def quest1():
+def quest1(mobH):
 
     global event
-    global mobH
     clear()
-
     # Create random location
     Locations.locationGen()
-
     foods = food.randomFood()
 
     # Spawn random Monster
     mob = mobs.randomMob()
 
-    mob.health = mob.health * mobH
+    mob.health = mob.health * (mobH // 5)
 
     print(f"You encountered {mob.name}")
 
@@ -43,29 +38,31 @@ def quest1():
             
             if mob.health > 0:
                 clear()
+
                 mob.health -= character.Hero.attack()
                 print(f"The {mob.name} has {mob.health} health left")
+
+                if mob.health <= 0:
+                    clear()
+                    print(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a {foods.name}.")
+                    hotkeys.inventory.append(foods)
+                    character.Hero.XP += mob.XP
+                    event += 1
+                    print(f"finished event(s): {event}")
+                    input("Press any key to continue...")
+                    clear()
+                    break
+
                 character.Hero.health -= mob.attack()
                 print(f"The {mob.name} attacked you. You have {character.Hero.health} health left")
       
                 if character.Hero.health <=0:
-                    clear()
+                    
                     print("You have been defeated")
                     input("Press any key to continue...")
-                    event -= 1
-                    break
-                    
-            elif mob.health <= 0:
-                clear()
-                print(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a {foods.name}.")
-                hotkeys.inventory.append(foods)
-                character.Hero.XP += mob.XP
-                event += 1
-                print(f"finished event(s): {event}")
-                input("Press any key to continue...")
-                clear()
-                break
-               
+                    clear()
+                    exit()
+            
         elif do == "d":
 
             clear()
