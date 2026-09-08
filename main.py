@@ -4,6 +4,7 @@ import Events
 import hotkeys
 import stats
 import difficulty
+import food
 
 # Terminal cleaning
 def clear():
@@ -19,7 +20,14 @@ clear()
 
 #call the start event function and select the path
 stats.beginning()
+
+clear()
+
 stats.beginning_item()
+
+clear()
+foods = food.randomFood()
+hotkeys.inventory.append(foods)
 
 Quest = input("You take an item into your inventory. The elder leads you to the entrance of the dungeon.\n"
 "The end of this story lies entirely in your hands. Are you ready? (Yes, No): ").lower()
