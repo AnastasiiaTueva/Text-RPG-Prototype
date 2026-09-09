@@ -12,13 +12,17 @@ def clear():
     os.system('cls')
 
 event = 0
+coins = 0
 
 def quest1(mobH):
 
     global event
+    global coins
     clear()
+    
     # Create random location
     Locations.locationGen()
+
     foods = food.randomFood()
 
     # Spawn random Monster
@@ -48,6 +52,7 @@ def quest1(mobH):
                     hotkeys.inventory.append(foods)
                     character.Hero.XP += mob.XP
                     event += 1
+                    coins += 1
                     print(f"finished event(s): {event}")
                     input("Press any key to continue...")
                     clear()
@@ -62,7 +67,22 @@ def quest1(mobH):
                     input("Press any key to continue...")
                     clear()
                     exit()
-            
+
+                if event == 3:
+                    print(f"You encountered a wandering merchant:\n" \
+                    f"You have {coins} coins")
+                    print("What do you want to buy?\n" \
+                    "Apple - 2 coins\n" \
+                    "Bread - 3 coins\n")
+                    buying = input("(Apple/Bread/No): ").lower()
+                    if buying == "apple" and coins >= 2:
+                        hotkeys.inventory.append(foods.apple)
+                    elif buying == "bread" and coins >= 3:
+                        hotkeys.inventory.append(foods.bread)
+                    else:
+                        input("You entered the command incorrectly. Press any key to continue.")
+                        clear()
+               
         elif do == "d":
 
             clear()
