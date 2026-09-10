@@ -11,9 +11,10 @@ class Food:
     def __str__(self):
         return self.name
 
+
 # Creating a food objects
 
-apple = Food("Apple", "A juicy ripe apple", 10),
+apple = Food("Apple", "A juicy ripe apple", 10)
 bread = Food("Bread", "A simple fresh bread", 12)
 
 def randomFood():
