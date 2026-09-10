@@ -19,7 +19,7 @@ def quest1(mobH):
     global event
     global coins
     clear()
-    
+
     # Create random location
     Locations.locationGen()
 
@@ -32,7 +32,6 @@ def quest1(mobH):
 
     print(f"You encountered {mob.name}")
 
-    
     while True:
         # Creating the fight and results
         hotkeys.ui()
@@ -76,13 +75,13 @@ def quest1(mobH):
                     "Bread - 3 coins\n")
                     buying = input("(Apple/Bread/No): ").lower()
                     if buying == "apple" and coins >= 2:
-                        hotkeys.inventory.append(foods.apple)
+                        hotkeys.inventory.append(food.apple)
                     elif buying == "bread" and coins >= 3:
-                        hotkeys.inventory.append(foods.bread)
+                        hotkeys.inventory.append(food.bread)
                     else:
                         input("You entered the command incorrectly. Press any key to continue.")
                         clear()
-               
+                    
         elif do == "d":
 
             clear()
