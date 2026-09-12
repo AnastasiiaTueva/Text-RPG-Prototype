@@ -4,13 +4,13 @@ import food
 import character
 import stats
 import special
-
+import text
 
 # Hotcase menu appearance
 def ui():
     width = 60
-
     print("\n " + "-" * width + " ")
+
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
     print("|" + menu.center(width) + "|")
     print(" " + "-" * width + " ")
@@ -21,9 +21,9 @@ inventory = []
 # Creating functionality for the letter I
 def I():
     Events.clear()
-    print("Inventory:")
+    text.typetext("Inventory:")
     for item in inventory:
-        print(f"{item}")
+        text.typetext(f"{item}")
 
     choice = input("What item do you want to use?(object/No) ").lower()
 
@@ -38,15 +38,15 @@ def I():
                 character.Hero.health += item.heal
 
                 inventory.remove(item)
-                print(f"{item.description} was used. Your current health {character.Hero.health}")
+                text.typetext(f"{item.description} was used. Your current health {character.Hero.health}")
                 return
-    print("There is no such item")
+    text.typetext("There is no such item")
 
 # Creating functionality for the letter S
 def S():
-    print(f"Exp: {character.Hero.XP}")
-    print(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
-    print(f"ability: {special.Perk}. {special.Perk.description}")
+    text.typetext(f"Exp: {character.Hero.XP}")
+    text.typetext(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
+    text.typetext(f"ability: {special.Perk}. {special.Perk.description}")
     input("Continue the adventure. Press any key... ")
     Events.clear()
     return
