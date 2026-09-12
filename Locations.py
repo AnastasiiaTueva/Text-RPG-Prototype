@@ -1,5 +1,6 @@
 import random
 import character
+import text
 
 def locationGen():
 
@@ -19,5 +20,5 @@ def locationGen():
     random_size = random.choice(sizeRoom)
     random_type = random.choice(typeRoom)
 
-    print(f"You are in {random_size} {random_type}")
+    text.typetext(f"You are in {random_size} {random_type}")
     return
