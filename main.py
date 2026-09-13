@@ -41,9 +41,9 @@ elif Quest == "yes":
     while True:
 
         clear()
-
+        Rsize, Rtype = Locations.locationGen()
         if Events.event >= 0:
-            Events.quest1(rooms)
+            Events.quest1(rooms, Rtype)
 
             if Events.event >= rooms:
                 print("You finished the game!")
