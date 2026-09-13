@@ -5,6 +5,11 @@ import character
 import stats
 import special
 import text
+import os
+
+# Terminal cleaning
+def clear():
+    os.system('cls')
 
 # Hotcase menu appearance
 def ui():
@@ -15,6 +20,7 @@ def ui():
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
     print("|" + menu.center(width) + "|")
     print(" " + "-" * width + " ")
+
 
 # Creating an inventory list
 inventory = []
@@ -30,7 +36,23 @@ def I():
 
     if choice.lower() == "no":
         return
-    
+    elif choice == "bone":
+        print(Items.Bone.description)
+        input("Press any key...")
+    elif choice == "stick":
+        print(Items.Stick.description)
+        input("Press any key...")
+    elif choice == "rope":
+        print(Items.Rope.description)
+        input("Press any key...")
+    elif choice == "dagger":
+        print(Items.Dagger.description)
+        input("Press any key...")
+    elif choice == "horseshoe":
+        print(Items.Horseshoe.description)
+        input("Press any key...")
+    clear()
+
 
     # Reaction to the fact that an item must be of the food class to restore health
     for item in inventory:
@@ -41,11 +63,10 @@ def I():
                 inventory.remove(item)
                 text.typetext(f"{item.description} was used. Your current health {character.Hero.health}")
                 return
-    text.typetext("There is no such item")
-
 
 # Creating functionality for the letter S
 def S():
+    text.typetext(f"Level: {character.Hero.level}")
     text.typetext(f"Exp: {character.Hero.XP}")
     text.typetext(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
     text.typetext(f"ability: {special.Perk}. {special.Perk.description}")
