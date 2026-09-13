@@ -21,4 +21,4 @@ def locationGen():
     random_type = random.choice(typeRoom)
 
     text.typetext(f"You are in {random_size} {random_type}")
-    return
+    return random_size, random_type
