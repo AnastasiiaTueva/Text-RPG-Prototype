@@ -9,6 +9,7 @@ import Locations
 import food
 import text
 import rooms
+import level
 
 def clear():
     os.system('cls')
@@ -51,7 +52,6 @@ def quest1(mobH, Rtype):
             input("You entered the command incorrectly. Press any key to continue.")
             clear()
 
-        
 
     while True:
 
@@ -75,18 +75,7 @@ def quest1(mobH, Rtype):
                     event += 1
                     coins += 1
                     text.typetext(f"finished event(s): {event}")
-                    if character.Hero.XP == 100:
-                        character.Hero.level += 1
-                        character.Hero.health += 5
-                        text.typetext(f"You gained {character.Hero.level} level!")
-                    elif character.Hero.XP == 200:
-                        character.Hero.level += 1
-                        character.Hero.health += 5
-                        text.typetext(f"You gained {character.Hero.level} level!")
-                    elif character.Hero.XP == 300:
-                        character.Hero.level += 1
-                        character.Hero.health +=5
-                        text.typetext(f"You gained {character.Hero.level} level!")
+                    level.leveling()
                         
                     input("Press any key to continue...")
                     clear()
