@@ -4,6 +4,7 @@ import hotkeys
 import os
 import special
 import text
+import Items
 
 # Terminal cleaning
 def clear():
@@ -85,13 +86,13 @@ def beginning_item():
     "It may not seem useful, but if you are superstitious, it might bring you a bit of luck.\n\n")
     startItem = input("Which item will you take?(Stick, Rope, Dagger, Horseshoe): ").lower()
     if startItem == "stick":
-        hotkeys.inventory.append("Stick")
+        hotkeys.inventory.append(Items.Stick)
     elif startItem == "rope":
-        hotkeys.inventory.append("Rope")
+        hotkeys.inventory.append(Items.Rope)
     elif startItem == "dagger":
-        hotkeys.inventory.append("Dagger")
+        hotkeys.inventory.append(Items.Dagger)
     elif startItem == "horseshoe":
-        hotkeys.inventory.append("Horseshoe")
+        hotkeys.inventory.append(Items.Horseshoe)
     else:
         clear()
         text.typetext("Choose an item(Stick, Rope, Dagger, Horseshoe).")
