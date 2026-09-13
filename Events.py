@@ -8,6 +8,7 @@ import Items
 import Locations
 import food
 import text
+import rooms
 
 def clear():
     os.system('cls')
@@ -16,21 +17,17 @@ event = 0
 coins = 0
 merchant = False
 
-def quest1(mobH):
+def quest1(mobH, Rtype):
 
     global event
     global coins
     clear()
 
-    foods = food.randomFood()
-
     # Spawn random Monster
     mob = mobs.randomMob()
     mob.health = mob.health * (mobH // 5)
 
-    # Create random location
     Rsize, Rtype = Locations.locationGen()
-
     text.typetext(f"You encountered {mob.name}")
 
 
@@ -54,7 +51,6 @@ def quest1(mobH):
             input("You entered the command incorrectly. Press any key to continue.")
             clear()
 
-
     while True:
 
         # Creating the fight and results
@@ -71,8 +67,8 @@ def quest1(mobH):
 
                 if mob.health <= 0:
                     clear()
-                    text.typetext(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a {foods.name}.")
-                    hotkeys.inventory.append(foods)
+                    item = rooms.Tloot(Rtype)
+                    text.typetext(f"The {mob.name} is defeated. You gained {mob.XP} XP. You got a {item.name}.")
                     character.Hero.XP += mob.XP
                     event += 1
                     coins += 1
@@ -95,25 +91,8 @@ def quest1(mobH):
         elif do == "d":
 
             clear()
-
-            if Rsize == "middle":
-                if random.random() < 0.2 * character.Hero.agility:
-                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
-                else:
-                    character.Hero.health -= mob.attack()
-                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
-            elif Rsize == "small":
-                if random.random() < 0.1 * character.Hero.agility:
-                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
-                else:
-                    character.Hero.health -= mob.attack()
-                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
-            elif Rsize == "huge":
-                if random.random() < 0.3 * character.Hero.agility:
-                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
-                else:
-                    character.Hero.health -= mob.attack()
-                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
+            rooms.Dsize()
+            
         
         elif do == "i":
             hotkeys.I()
