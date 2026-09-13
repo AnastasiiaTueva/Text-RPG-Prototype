@@ -29,7 +29,8 @@ def quest1(mobH):
     mob.health = mob.health * (mobH // 5)
 
     # Create random location
-    Locations.locationGen()
+    Rsize, Rtype = Locations.locationGen()
+
     text.typetext(f"You encountered {mob.name}")
 
 
@@ -94,11 +95,25 @@ def quest1(mobH):
         elif do == "d":
 
             clear()
-            if random.random() < 0.2 * character.Hero.agility:
-                text.typetext(f"The {mob.name} attacked you, but you dodged.")
-            else:
-                character.Hero.health -= mob.attack()
-                text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
+
+            if Rsize == "middle":
+                if random.random() < 0.2 * character.Hero.agility:
+                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
+                else:
+                    character.Hero.health -= mob.attack()
+                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
+            elif Rsize == "small":
+                if random.random() < 0.1 * character.Hero.agility:
+                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
+                else:
+                    character.Hero.health -= mob.attack()
+                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
+            elif Rsize == "huge":
+                if random.random() < 0.3 * character.Hero.agility:
+                    text.typetext(f"The {mob.name} attacked you, but you dodged.")
+                else:
+                    character.Hero.health -= mob.attack()
+                    text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
         
         elif do == "i":
             hotkeys.I()
