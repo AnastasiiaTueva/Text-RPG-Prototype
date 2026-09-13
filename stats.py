@@ -1,100 +1,56 @@
-import character
 import Events
-import hotkeys
-import os
+import Items
+import food
+import character
+import stats
 import special
 import text
-import Items
 
-# Terminal cleaning
-def clear():
-    os.system('cls')
+# Hotcase menu appearance
+def ui():
+    width = 60
 
 
-# The start event function and select the path
-def beginning():
-    clear()
-    text.typetext("Stranger! I know this is a sudden, but we need your help.\n" \
-    "Our dungeon has been overrun by monsters, and recently they have started raiding our village\n" \
-    "Can you destroy the monsters and reclaim the dungeon for us?\n\n")
-    begin = input(" - Can you tell me more about the dungeon?(Intelligence route) (1)\n" \
-                  
-    " - How strong are the monsters in the dungeon?(Strength route) (2)\n" \
-    " - Are there any traps in the dungeon? (Agility route) (3)\n" \
-    " - Are there treasures in the dungeon? (Luck route) (4)\n" \
-    "Choose the question(1,2,3,4): ")
+    print("\n " + "-" * width + " ")
 
-    if begin == "1":
-        clear()
-        character.Hero.intelligence += 2
-        special.Perk = special.SurvivalSense
-        text.typetext(" Before the monsters came, we used the dungeon for feasts. Many joyful events in our settlement were celebrated there.\n" \
-        "But because of the monster raids, we had to abandon it. There may still be food and drink left inside.\n")
-        text.typetext("You got Survival Sense.")
-        input("Continue the adventure. Press any key... ")
+    menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
+    print("|" + menu.center(width) + "|")
+    print(" " + "-" * width + " ")
 
-    elif begin == "2":
-        clear()
-        character.Hero.strength += 2
-        special.Perk = special.CombatInsight
-        text.typetext("Most of the raids are carried out by skeletons and slimes.\n"
-           "They are not particuarly dangerous and are quite slow.\n" \
-        " With a good strike, you can easily stun a skeleton and finish it off, and slimes can simply be burned.\n" \
-        " However we fear monsters may also dwell there.")
-        text.typetext("You got Combat insight\n")
-        input("Continue the adventure. Press any key... ")
 
-    elif begin == "3":
-        clear()
-        character.Hero.agility += 2
-        special.Perk = special.TrapSense
-        text.typetext("Now that you mention it, I recall some rumors \n" \
-        "Someone exploring the dungeon once claimed that certain pieces of furniture were moving on their own...\n" \
-        "though I am not sure how true that is.")
-        text.typetext("You got Trap Sense\n")
-        input("Continue the adventure. Press any key... ")
+# Creating an inventory list
+inventory = []
 
-    elif begin == "4":
-        clear()
-        character.Hero.luck += 2
-        special.Perk = special.WeirdLuck
-        text.typetext("We had to leave dungeon in a hurry, and many villagers' belongings were left behind.\n " \
-        "You may use them if you wish, but i would be grateful if you return them to their owners afterward.")
-        text.typetext("You got Weird Luck\n")
-        input("Continue the adventure. Press any key... ")
+# Creating functionality for the letter I
+def I():
+    Events.clear()
+    text.typetext("Inventory:")
+    for item in inventory:
+        text.typetext(f"{item.name}")
 
-    else:
-        clear()
-        text.typetext("Choose a number(1,2,3,4).\n ")
-        input("Continue the adventure. Press any key... ")
+    choice = input("What item do you want to use?(object/No) ").lower()
+
+    if choice.lower() == "no":
         return
-    clear()
+    
 
-# Function to get the first item
-def beginning_item():
-    text.typetext("Our settlement is not wealthy, but you may take any item from our storage.\n" \
-    "(You head to the local storage with the village elder.\n" \
-    "It is a small wooden, hut, filled with the smell of dust and tree sap.\n" \
-    "The hut is cluttered with various household tools, though few seem useful for your journey.)\n")
-    text.typetext(" Stick - A smooth handle for future axe, pickaxe, or something similar.\n " \
-    "Doesn't sound very useful, but with enough imagination, it might prove handy.\n\n" \
-    " Rope - A three-meter length of rope. It looks almost unused, as if someone placed it here recently.\n" \
-    "With the right skill, it could be very useful\n\n" \
-    " Dagger - A small silver dagger. It looks worn, but still usable. Compared to your iron sword,\n" \
-    "it may not seem like a great option, but it could give you an advantage against enemies.\n\n" \
-    " Horseshoe - Looks very well crafted. likely made by a renowned blacksmith.\n" \
-    "It may not seem useful, but if you are superstitious, it might bring you a bit of luck.\n\n")
-    startItem = input("Which item will you take?(Stick, Rope, Dagger, Horseshoe): ").lower()
-    if startItem == "stick":
-        hotkeys.inventory.append(Items.Stick)
-    elif startItem == "rope":
-        hotkeys.inventory.append(Items.Rope)
-    elif startItem == "dagger":
-        hotkeys.inventory.append(Items.Dagger)
-    elif startItem == "horseshoe":
-        hotkeys.inventory.append(Items.Horseshoe)
-    else:
-        clear()
-        text.typetext("Choose an item(Stick, Rope, Dagger, Horseshoe).")
-        input("Continue the adventure. Press any key... ")
-        return
+    # Reaction to the fact that an item must be of the food class to restore health
+    for item in inventory:
+        if isinstance(item, food.Food):
+            if item.name.lower() == choice:
+                character.Hero.health += item.heal
+
+                inventory.remove(item)
+                text.typetext(f"{item.description} was used. Your current health {character.Hero.health}")
+                return
+    text.typetext("There is no such item")
+
+# Creating functionality for the letter S
+def S():
+    text.typetext(f"Level: {character.Hero.level}")
+    text.typetext(f"Exp: {character.Hero.XP}")
+    text.typetext(f" Stats: Luck: {character.Hero.luck}, Strength: {character.Hero.strength}, Agility: {character.Hero.agility}, Intelligence: {character.Hero.intelligence}")
+    text.typetext(f"ability: {special.Perk}. {special.Perk.description}")
+    input("Continue the adventure. Press any key... ")
+    Events.clear()
+    return
