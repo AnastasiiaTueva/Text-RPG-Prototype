@@ -5,6 +5,8 @@ import hotkeys
 import stats
 import difficulty
 import food
+import rooms
+import Locations
 
 # Terminal cleaning
 def clear():
