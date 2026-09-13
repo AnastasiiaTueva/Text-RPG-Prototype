@@ -9,6 +9,7 @@ import text
 # Hotcase menu appearance
 def ui():
     width = 60
+
     print("\n " + "-" * width + " ")
 
     menu = "(I) - Inventory | (S) - Stats | (X) - Exit"
@@ -23,7 +24,7 @@ def I():
     Events.clear()
     text.typetext("Inventory:")
     for item in inventory:
-        text.typetext(f"{item}")
+        text.typetext(f"{item.name}")
 
     choice = input("What item do you want to use?(object/No) ").lower()
 
@@ -41,6 +42,7 @@ def I():
                 text.typetext(f"{item.description} was used. Your current health {character.Hero.health}")
                 return
     text.typetext("There is no such item")
+
 
 # Creating functionality for the letter S
 def S():
