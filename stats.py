@@ -25,7 +25,7 @@ def beginning():
 
     if begin == "1":
         clear()
-        character.Hero.intelligence += 5
+        character.Hero.intelligence += 2
         special.Perk = special.SurvivalSense
         text.typetext(" Before the monsters came, we used the dungeon for feasts. Many joyful events in our settlement were celebrated there.\n" \
         "But because of the monster raids, we had to abandon it. There may still be food and drink left inside.\n")
@@ -34,7 +34,7 @@ def beginning():
 
     elif begin == "2":
         clear()
-        character.Hero.strength += 5
+        character.Hero.strength += 2
         special.Perk = special.CombatInsight
         text.typetext("Most of the raids are carried out by skeletons and slimes.\n"
            "They are not particuarly dangerous and are quite slow.\n" \
@@ -45,7 +45,7 @@ def beginning():
 
     elif begin == "3":
         clear()
-        character.Hero.agility += 5
+        character.Hero.agility += 2
         special.Perk = special.TrapSense
         text.typetext("Now that you mention it, I recall some rumors \n" \
         "Someone exploring the dungeon once claimed that certain pieces of furniture were moving on their own...\n" \
@@ -55,7 +55,7 @@ def beginning():
 
     elif begin == "4":
         clear()
-        character.Hero.luck += 5
+        character.Hero.luck += 2
         special.Perk = special.WeirdLuck
         text.typetext("We had to leave dungeon in a hurry, and many villagers' belongings were left behind.\n " \
         "You may use them if you wish, but i would be grateful if you return them to their owners afterward.")
