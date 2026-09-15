@@ -19,6 +19,7 @@ Dagger = Items("Dagger", "A small silver dagger. It looks worn, but still usable
 
 Horseshoe = Items("Horseshoe", "Looks very well crafted. likely made by a renowned blacksmith. It may not seem useful, but if you are superstitious, it might bring you a bit of luck.", 10)
 
+#Function for spawning random item.
 def randomItem():
 
     item = [Bone, Stick, Rope, Dagger, Horseshoe]
