@@ -2,6 +2,7 @@ import random
 import character
 import text
 
+#Function for spawning random location with size and type
 def locationGen():
 
     sizeRoom1 = "small"
