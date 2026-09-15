@@ -7,10 +7,12 @@ import food
 import Items
 import hotkeys
 
+
 def newRoom():
     global Rsize, Rtype
     Rsize, Rtype = Locations.locationGen()
 
+#Function for determining the room size and the character's corresponding ability to dodge.
 def Dsize():
     if Rsize == "middle":
         if random.random() < 0.2 * character.Hero.agility:
@@ -31,6 +33,7 @@ def Dsize():
                 character.Hero.health -= mobs.mob.attack()
                 text.typetext(f"You tried to dodge, but failed. You have {character.Hero.health} health left.")
 
+#Function for determining the room type and spawning loot.
 def Tloot(Rtype):
     if Rtype == "Dining Hall":
         item = food.randomFood()
