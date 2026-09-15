@@ -1,3 +1,4 @@
+#Function for setting the game difficulty.
 def difficult():
 
     difficulty_choice = input("Select difficulty(easy, hard, hardcore):").lower()
