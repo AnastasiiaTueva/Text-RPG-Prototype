@@ -13,10 +13,10 @@ class Food:
 
 
 # Creating a food objects
-
 apple = Food("Apple", "A juicy ripe apple", 10)
 bread = Food("Bread", "A simple fresh bread", 12)
 
+#Function for spawning random food.
 def randomFood():
 
     foods = [apple, bread]
