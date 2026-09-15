@@ -1,5 +1,6 @@
 import random 
 
+
 # Creating a monster class and characteristics
 class Mob:
 
@@ -10,8 +11,10 @@ class Mob:
         self.maxDamage = maxDamage
         self.XP = XP
 
+    # Function for creating random damage to a monster
     def attack(self):
         return random.randint(self.minDamage, self.maxDamage)
+
 
 # Creating randomization of monster spawns
 def randomMob():
